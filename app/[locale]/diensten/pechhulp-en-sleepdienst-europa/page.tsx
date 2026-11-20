@@ -16,7 +16,7 @@ export async function generateMetadata({
   return {
     title: dict.pechhulp?.seo?.title || "Pechhulp & Sleepdienst Europa - 24/7 Betrouwbare Hulp | Mobiele Hulp",
     description: dict.pechhulp?.seo?.description || "Professionele pechhulp en sleepdienst door heel Europa. 24/7 bereikbaar, snelle respons, geen abonnementskosten. Bel direct voor hulp bij autopech.",
-    keywords: dict.pechhulp?.seo?.keywords || "pechhulp europa, sleepdienst europa, autopech europa, 24/7 pechhulp, internationale pechhulp, auto slepen europa, wegenwacht europa, mobiele hulp europa",
+    keywords: dict.pechhulp?.seo?.keywords || "pechhulp europa, sleepdienst europa, autopech europa, 24/7 pechhulp, internationale pechhulp, auto slepen europa europa, mobiele hulp europa",
     openGraph: {
       title: dict.pechhulp?.seo?.title || "Pechhulp & Sleepdienst Europa - 24/7 Betrouwbare Hulp",
       description: dict.pechhulp?.seo?.description || "Professionele pechhulp en sleepdienst door heel Europa. 24/7 bereikbaar, snelle respons.",
@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/1.jpg"],
     },
     alternates: {
-      canonical: `/${locale}/diensten/pechhulp-en-sleepdienst-europa`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/diensten/pechhulp-en-sleepdienst-europa`,
     },
   }
 }

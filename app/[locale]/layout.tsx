@@ -11,8 +11,11 @@ import { CookieMelding } from "@/components/cookie"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Car World - International",
-  description: "Discover amazing cars from around the world",
+  // Vast domein: zonder dit werden relatieve canonicals op het Vercel-adres gebouwd.
+  metadataBase: new URL("https://mobielehulp.nl"),
+  // Stond nog op het voorbeeld "Car World - International" uit het sjabloon.
+  title: "Mobiele Hulp | 24/7 pechhulp, sleepdienst en accuservice",
+  description: "Pech onderweg? Mobiele Hulp helpt 24/7 met pechhulp, slepen, accuservice en berging. Bel 085 250 29 28.",
   verification: {
     google: "XFiQUA1j5_eK1-9joM-BZ01x_ltZ4cBDdhiFSBKTqhA",
   },

@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/4.jpg"],
     },
     alternates: {
-      canonical: `/${locale}/car-transport`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/car-transport`,
     },
   }
 }

@@ -20,7 +20,7 @@ export async function generateMetadata({
     description: dict.pechhulp.description,
     keywords:
       locale === "nl"
-        ? "pechhulp, autopech, sleepdienst, mobiele hulp, 24/7, nederland, europa, lekke band, accu service, autoberging, wegenwacht"
+        ? "pechhulp, autopech, sleepdienst, mobiele hulp, 24/7, nederland, europa, lekke band, accu service, autoberging"
         : "roadside assistance, car breakdown, towing service, mobile help, 24/7, netherlands, europe, battery service, tire repair",
     openGraph: {
       title: dict.pechhulp.title,

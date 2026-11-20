@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/2.jpg"],
     },
     alternates: {
-      canonical: `/${locale}/hoe-krijg-je-een-auto-uit-de-modder`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/hoe-krijg-je-een-auto-uit-de-modder`,
     },
   }
 }

@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/2.jpg"],
     },
     alternates: {
-      canonical: `/${locale}/auto-vast-in-gras`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/auto-vast-in-gras`,
     },
   }
 }

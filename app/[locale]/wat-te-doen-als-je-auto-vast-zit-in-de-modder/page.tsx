@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/1.jpg"],
     },
     alternates: {
-      canonical: `/${locale}/wat-te-doen-als-je-auto-vast-zit-in-de-modder`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/wat-te-doen-als-je-auto-vast-zit-in-de-modder`,
     },
   }
 }

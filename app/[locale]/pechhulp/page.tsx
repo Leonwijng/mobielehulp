@@ -16,7 +16,7 @@ export async function generateMetadata({
   return {
     title: dict.pechhulp?.seo?.title || "Pechhulp - 24/7 Snel en Betrouwbaar | Mobiele Hulp",
     description: dict.pechhulp?.seo?.description || "Direct pechhulp nodig? 24/7 bereikbaar, snelle service, professioneel en veilig weer op weg.",
-    keywords: dict.pechhulp?.seo?.keywords || "pechhulp, autopech, hulpdienst, 24/7 pechhulp, auto hulp, wegenwacht",
+    keywords: dict.pechhulp?.seo?.keywords || "pechhulp, autopech, hulpdienst, 24/7 pechhulp, auto hulp",
     openGraph: {
       title: dict.pechhulp?.seo?.title || "Pechhulp - 24/7 Snel en Betrouwbaar",
       description: dict.pechhulp?.seo?.description || "Direct pechhulp nodig? 24/7 bereikbaar, snelle service, professioneel en veilig weer op weg.",
@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/5.jpg"],
     },
     alternates: {
-      canonical: `/${locale}/pechhulp`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/pechhulp`,
     },
   }
 }

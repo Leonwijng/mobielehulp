@@ -9,15 +9,15 @@
     "title": "Pechhulp Nederland - 24/7 Mobiele Hulp bij Autopech",
     "description": "Betrouwbare en snelle pechhulp zonder abonnement. 24/7 beschikbaar in heel Nederland. Lekke band, lege accu of andere autopech? Wij staan voor je klaar.",
     "seo": {
-      "title": "Pechhulp & Wegenwacht Europa - 24/7 Betrouwbare Hulp | Mobiele Pechhulp",
+      "title": "Pechhulp & Wegenhulp Europa - 24/7 Betrouwbare Hulp | Mobiele Pechhulp",
       "description": "Professionele pechhulp door heel Europa. 24/7 bereikbaar, snelle respons, geen abonnementskosten. Van lekke band tot accu service - wij helpen direct.",
-      "keywords": "pechhulp europa, wegenwacht europa, autopech europa, 24/7 pechhulp, internationale pechhulp, mobiele pechhulp europa, lekke band hulp, accu service europa",
-      "imageAlt": "Pechhulp en Wegenwacht Europa"
+      "keywords": "pechhulp europa, wegenhulp europa, autopech europa, 24/7 pechhulp, internationale pechhulp, mobiele pechhulp europa, lekke band hulp, accu service europa",
+      "imageAlt": "Pechhulp en Wegenhulp Europa"
     },
     "hero": {
-      "badge": "Pechhulp & Wegenwacht",
+      "badge": "Pechhulp & Wegenhulp",
       "title": {
-        "part1": "Pechhulp & Wegenwacht",
+        "part1": "Pechhulp & Wegenhulp",
         "part2": "Door Heel Europa",
         "part3": "binnen 30 min ter plaatse"
       },
@@ -49,8 +49,8 @@
       ]
     },
     "serviceDetails": {
-      "title": "Complete Pechhulp & Wegenwacht Service",
-      "imageAlt": "Pechhulp en Wegenwacht Europa",
+      "title": "Complete Pechhulp & Wegenhulp Service",
+      "imageAlt": "Pechhulp en Wegenhulp Europa",
       "items": [
         {
           "title": "Sleepdienst & takeldienst door heel europa",
@@ -204,8 +204,8 @@
       }
     },
     "feature": {
-      "sectionLabel": "Pechhulp & Wegenwacht",
-      "title": "Snelle Pechhulp en Betrouwbare Wegenwacht bij Autopech",
+      "sectionLabel": "Pechhulp & Wegenhulp",
+      "title": "Snelle Pechhulp en Betrouwbare Wegenhulp bij Autopech",
       "subtitle": "Altijd bereikbaar, dag en nacht",
       "description": "Heb je autopech of sta je met een kapotte auto langs de weg? Onze professionele pechhulp is 24/7 beschikbaar voor directe hulp. Van lekke banden en lege accu's tot complexe reparaties - met moderne apparatuur en realtime locatiebepaling zijn wij snel ter plaatse om je veilig en efficiënt te helpen. Of het nu gaat om simpele pech of een serieuze storing - wij zorgen dat je snel weer op weg bent.",
       "button": "Ontdek onze pechhulp"
@@ -214,7 +214,7 @@
       "title": "Onze Pechhulpdiensten",
       "subtitle": "Altijd mobiel bereikbaar, waar je ook staat met autopech – wij lossen het op.",
       "roadside": {
-        "title": "Pechhulp & Wegenwacht Europa",
+        "title": "Pechhulp & Wegenhulp Europa",
         "description": "Weghulp biedt snelle, betrouwbare pechhulp zonder abonnementen of verborgen kosten, met 24/7 service in Nederland en Europa.",
         "features": [
           "Geen abonnement",
@@ -1858,7 +1858,7 @@
     "seo": {
       "title": "Autopech Service - 24/7 Hulp bij Pech onderweg | Mobiele Hulp",
       "description": "Direct hulp bij autopech onderweg. 24/7 bereikbaar, snelle service, vakkundige monteurs. We helpen u snel weer op weg.",
-      "keywords": "autopech, pechhulp, pech onderweg, auto start niet, 24/7 hulp, pechservice, wegenwacht",
+      "keywords": "autopech, pechhulp, pech onderweg, auto start niet, 24/7 hulp, pechservice, wegenhulp",
       "imageAlt": "Professionele autopech hulp"
     },
     "hero": {

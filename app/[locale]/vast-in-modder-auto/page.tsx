@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/1.jpg"],
     },
     alternates: {
-      canonical: `/${locale}/vast-in-modder-auto`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/vast-in-modder-auto`,
     },
   }
 }

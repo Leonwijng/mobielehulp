@@ -5,6 +5,7 @@ import { getDictionary } from "../dictionaries";
 import plaatsen from "@/app/data/plaatsen";
 import { topics, TopicDef } from "@/app/data/topics";
 import { allAcceptedSlugs, canonicalSlug, normalize } from "@/lib/slug";
+import { indexeerbaar, lokaleInhoud } from "@/lib/lokaal";
 import { Phone, AlertTriangle, ArrowRight, MapPin, Star } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -21,28 +22,15 @@ export const revalidate = 3600;
 
 type Params = { locale: string; slug?: string[] };
 
-// ✅ UNIQU CONTENT PER PLAATS - FALLBACK VOOR ALLE STEDEN
-const plaatsContent: Record<string, any> = {
-  "s-gravenhage": {
-    intro: "In 's-Gravenhage en rondom Den Haag zien we veel accuproblemen door koude winterochtenden op de A4 en A12. Onze monteurs kennen de lokale hotspots zoals Scheveningen en het centrum perfect.",
-    localTips: ["Winterklaar maken voor Haagse winters", "Snelle service bij Erasmusbrug files", "24/7 standby voor kustroute pech", "Lokale garages Voorburg/Rijswijk"],
-    hotspots: ["A4 knooppunt Burgerveen", "Scheveningseweg", "Centrum ring A44", "N44 Vlietzone"],
-    description: "24/7 accu vervangen 's-Gravenhage. Snelle pechhulp A4, A12, Scheveningen. Binnen 30 min."
-  },
-  "s-hertogenbosch": {
-    intro: "'s-Hertogenbosch heeft veel accupech door bruggen en koude Bossche winters. Binnen 20 min bij Diezebrug of Pettelaarseweg.",
-    localTips: ["Bossche binnenstad via Hinthamerstraat", "Snelle routes Pettelaarseweg A59", "24/7 Brabantse polderwegen", "Wintertips accu's vorst"],
-    hotspots: ["Diezebrug", "Pettelaarseweg", "'s-Hertogenbosch centrum", "A59 afslag Hintham"],
-    description: "Accu vervangen 's-Hertogenbosch binnen 25 min. Pechhulp Diezebrug, A59, centrum. 24/7."
-  }
-};
-
 function getPlaatsContent(plaats: string) {
-  return plaatsContent[plaats] || {
-    intro: `Snelle 24/7 pechhulp ${plaats}. Binnen 30 minuten ter plaatse door lokale monteurs.`,
-    localTips: ["24/7 lokale service", "Binnen 30 minuten ter plaatse", "Geen abonnement nodig", "Professionele monteurs"],
-    hotspots: [`${plaats} centrum`, `${plaats} ringweg`, "A-wegen", "Lokale hotspots"],
-    description: `24/7 pechhulp ${plaats}. Snelle service zonder abonnement.`
+  // Alleen feiten uit de open data; de oude handgeschreven "hotspots" klopten niet
+  // (zoals de Erasmusbrug bij Den Haag) en de rest was "[plaats] ringweg" en "A-wegen".
+  const echt = lokaleInhoud(plaats);
+  return {
+    intro: echt?.intro ?? `Pech in ${plaats}? Mobiele Hulp komt 24/7 naar je toe voor pechhulp, slepen of accuservice.`,
+    localTips: ["24/7 bereikbaar", "Geen abonnement nodig", "Pechhulp op locatie", "Slepen naar een garage naar keuze"],
+    hotspots: echt?.hotspots ?? [],
+    description: `24/7 pechhulp in ${plaats}: starthulp, slepen en accuservice op locatie. Geen abonnement nodig. Bel 085 250 29 28.`,
   };
 }
 
@@ -106,7 +94,16 @@ export async function generateMetadata(
   const dictSection = (dict as any)[match.topic.dictKey] ?? (dict as any).pechhulp;
   const plaatsContentData = getPlaatsContent(match.plaats);
 
-  const title = `${dictSection?.seo?.title || match.topic.key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())} in ${match.plaats}`;
+  // Eigen titel per onderwerp en plaats. De oude titel kwam voor elk onderwerp uit de pechhulp-tekst
+  // (de pechhulp-titel), ook op accu- en sleeppagina's.
+  const onderwerpNaam: Record<string, string> = {
+    "accu-vervangen": "Accu vervangen",
+    sleepdienst: "Sleepdienst",
+    pechhulp: "Pechhulp",
+    "auto-vast-in-modder": "Auto vast in de modder",
+    "auto-slepen": "Auto laten slepen",
+  };
+  const title = `${onderwerpNaam[match.topic.baseSlug] ?? dictSection?.seo?.title ?? "Pechhulp"} in ${match.plaats} | 24/7 Mobiele Hulp`;
   const description = plaatsContentData.description;
 
   // ✅ NL DEFAULT CANONICAL - GEEN /nl/
@@ -115,13 +112,18 @@ export async function generateMetadata(
 
   return {
     title,
-    description: description.slice(0, 155) + '...',
+    description: description.length > 155 ? description.slice(0, 154) + '…' : description,
     keywords: [
       normalize(match.plaats),
       `${match.topic.baseSlug} ${normalize(match.plaats)}`,
       "pechhulp", "24/7", "accu vervangen", match.plaats
     ].join(', '),
-    robots: { index: true, follow: true },
+    // Alleen echte woonplaatsen, en alleen het adres /[plaats]/[onderwerp]; de andere adressen
+    // wijzen met de canonical al naar dat adres.
+    robots:
+      slugSegments.length === 2 && indexeerbaar(match.topic.baseSlug, match.plaats)
+        ? { index: true, follow: true }
+        : { index: false, follow: true },
     alternates: { canonical },
     openGraph: {
       title,
@@ -207,9 +209,10 @@ export default async function TopicCityPage({ params }: { params: Params }) {
                 <div className="space-y-6 text-xl text-gray-700 leading-relaxed">
                   <p>{plaatsContentData.intro}</p>
                   
+                  {plaatsContentData.hotspots.length > 0 && (
                   <div className="p-8 bg-white rounded-3xl shadow-xl border">
                     <h3 className="text-3xl font-bold mb-6 flex items-center gap-3 text-gray-900">
-                      🚨 Pechplekken {match.plaats}:
+                      Wegen en punten bij {match.plaats}:
                     </h3>
                     <div className="grid md:grid-cols-2 gap-4">
                       {plaatsContentData.hotspots.map((hotspot, i) => (
@@ -218,11 +221,12 @@ export default async function TopicCityPage({ params }: { params: Params }) {
                             <div className="w-3 h-3 bg-[#c8eb67] rounded-full" />
                             <span className="font-semibold text-lg">{hotspot}</span>
                           </div>
-                          <p className="text-sm text-gray-600">Binnen 25 min ter plaatse</p>
+                          <p className="text-sm text-gray-600">Ook hier komen we je helpen</p>
                         </div>
                       ))}
                     </div>
                   </div>
+                  )}
 
                   <div>
                     <h3 className="text-3xl font-bold mb-6">✅ Onze {match.plaats} service:</h3>

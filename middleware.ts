@@ -34,10 +34,20 @@ export function middleware(request: NextRequest) {
     return
   }
 
-  // Check if pathname already has a locale
-  const pathnameHasLocale = locales.some((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`)
+  // /nl/... is dezelfde pagina als /...: één adres, zodat Google ze niet als dubbel ziet.
+  if (pathname === "/nl" || pathname.startsWith("/nl/")) {
+    const zonder = new URL(pathname.slice(3) || "/", request.url)
+    zonder.search = request.nextUrl.search
+    return NextResponse.redirect(zonder, 308)
+  }
 
-  if (pathnameHasLocale) return
+  // De Engelse, Duitse en Franse versies blijven bruikbaar, maar gaan niet in Google.
+  const pathnameHasLocale = locales.some((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`)
+  if (pathnameHasLocale) {
+    const response = NextResponse.next()
+    response.headers.set("X-Robots-Tag", "noindex, follow")
+    return response
+  }
 
   // Route requests without an explicit locale
   const locale = getLocale(request)

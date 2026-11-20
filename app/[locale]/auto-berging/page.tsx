@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/6.png"],
     },
     alternates: {
-      canonical: `/${locale}/auto-berging`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/auto-berging`,
     },
   }
 }

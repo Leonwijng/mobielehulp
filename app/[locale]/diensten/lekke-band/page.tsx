@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/5.png"],
     },
     alternates: {
-      canonical: `/${locale}/diensten/lekke-band`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/diensten/lekke-band`,
     },
   }
 }

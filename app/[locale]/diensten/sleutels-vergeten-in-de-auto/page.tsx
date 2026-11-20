@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/keys.jpg"],
     },
     alternates: {
-      canonical: `/${locale}/diensten/sleutels-vergeten`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/diensten/sleutels-vergeten`,
     },
   }
 }

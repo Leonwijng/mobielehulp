@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/6.png"],
     },
     alternates: {
-      canonical: `/${locale}/diensten/autoberging-247`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/diensten/autoberging-247`,
     },
   }
 }

@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/8.jpg"],
     },
     alternates: {
-      canonical: `/${locale}/auto-weg-laten-slepen`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/auto-weg-laten-slepen`,
     },
   }
 }

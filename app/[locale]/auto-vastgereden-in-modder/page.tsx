@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/2.jpg"],
     },
     alternates: {
-      canonical: `/${locale}/auto-vastgereden-in-modder`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/auto-vastgereden-in-modder`,
     },
   }
 }

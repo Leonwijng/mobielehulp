@@ -16,7 +16,7 @@ export async function generateMetadata({
   return {
     title: dict.autopech?.seo?.title || "Autopech Service - 24/7 Hulp bij Pech onderweg | Mobiele Hulp",
     description: dict.autopech?.seo?.description || "Direct hulp bij autopech onderweg. 24/7 bereikbaar, snelle service, vakkundige monteurs. We helpen u snel weer op weg.",
-    keywords: dict.autopech?.seo?.keywords || "autopech, pechhulp, pech onderweg, auto start niet, 24/7 hulp, pechservice, wegenwacht",
+    keywords: dict.autopech?.seo?.keywords || "autopech, pechhulp, pech onderweg, auto start niet, 24/7 hulp, pechservice",
     openGraph: {
       title: dict.autopech?.seo?.title || "Autopech Service - 24/7 Hulp bij Pech onderweg",
       description: dict.autopech?.seo?.description || "Direct hulp bij autopech onderweg. 24/7 bereikbaar, snelle service, vakkundige monteurs.",
@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/2.jpg"],
     },
     alternates: {
-      canonical: `/${locale}/auto-pech`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/auto-pech`,
     },
   }
 }

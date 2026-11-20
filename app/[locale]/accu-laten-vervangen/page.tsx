@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/8.jpg"],
     },
     alternates: {
-      canonical: `/${locale}/accu-laten-vervangen`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/accu-laten-vervangen`,
     },
   }
 }

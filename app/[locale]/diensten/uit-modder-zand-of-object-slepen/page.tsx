@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/2.jpg"],
     },
     alternates: {
-      canonical: `/${locale}/diensten/uit-modder-zand-of-object-slepen`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/diensten/uit-modder-zand-of-object-slepen`,
     },
   }
 }
