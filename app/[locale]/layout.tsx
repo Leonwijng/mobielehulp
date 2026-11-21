@@ -73,9 +73,9 @@ export default async function LocaleLayout({
           <div className="max-w-7xl mx-auto px-6 grid gap-12 md:grid-cols-4">
             {/* Logo en beschrijving */}
             <div className="col-span-2">
-              <div className="text-2xl font-bold mb-2">Pechhulp Nederland</div>
+              <div className="text-2xl font-bold mb-2">Mobiele Hulp</div>
               <p className="text-sm text-white mb-4">
-                Pechhulp Nederland is jouw betrouwbare partner bij autopech, waar
+                Mobiele Hulp is jouw betrouwbare partner bij autopech, waar
                 je ook bent.
               </p>
               <div className="flex items-center gap-3 text-[#c8eb67]">
@@ -171,7 +171,7 @@ export default async function LocaleLayout({
             </a>
             <br />
             <span className="block mt-2">
-              © 2025 Pechhulp Nederland. Alle rechten voorbehouden.
+              © 2025 Mobiele Hulp. Alle rechten voorbehouden.
             </span>
             <a href="https://upseo.nl/website-laten-maken" target="_blank" rel="noopener noreferrer">
               website laten maken 
