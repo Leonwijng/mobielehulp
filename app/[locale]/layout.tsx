@@ -94,7 +94,7 @@ export default async function LocaleLayout({
               </div>
               <div className="pt-8 flex flex-col gap-4">
                 <a
-                  href="tel:0881234567"
+                  href="tel:0852502928"
                   className="w-full mb-4 max-w-xs sm:w-auto inline-flex items-center justify-between px-6 py-3 bg-white text-black rounded-full shadow-md border border-gray-200 hover:bg-gray-100 transition-all group"
                 >
                   <span className="flex items-center gap-2 font-medium text-base">
@@ -104,8 +104,8 @@ export default async function LocaleLayout({
                     <Phone className="w-4 h-4" />
                   </span>
                 </a>
-                <Link
-                  href="/contact"
+                <a
+                  href="https://wa.me/31850609880"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full max-w-xs sm:w-auto inline-flex items-center justify-between rounded-full bg-white text-black border border-gray-300 hover:shadow-md px-6 py-3 font-medium transition-all group"
@@ -114,7 +114,7 @@ export default async function LocaleLayout({
                   <div className="w-8 h-8 rounded-full bg-[#c8eb67] text-black flex items-center justify-center transition-transform group-hover:translate-x-1">
                     <ArrowRight className="w-4 h-4" />
                   </div>
-                </Link>
+                </a>
               </div>
             </div>
 

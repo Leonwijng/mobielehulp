@@ -37,7 +37,7 @@ export async function generateMetadata({
       images: ["/services/fuel.jpg"],
     },
     alternates: {
-      canonical: `${locale === "nl" ? "" : `/${locale}`}/diensten/verkeerde-brandstof`,
+      canonical: `${locale === "nl" ? "" : `/${locale}`}/diensten/verkeerde-brandstof-getankt`,
     },
   }
 }
